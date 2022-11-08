@@ -62,4 +62,16 @@ server.put('/api/courses/edit/:id', (req, res) => {
 
 //-------------------------------- DELETE --------------------------------------
 
+server.delete('/api/courses/delete/:id', (req, res) => {
+    const course = courses.find(courses => courses.id === parseInt(req.params.id))
+    let index = courses.indexOf(course)
+    courses.splice(index, 1)
+    
+    res.send(JSON.stringify({
+        success: true,
+        notice: "Xóa thành công",
+        data: courses
+    }))
+})
+
 server.listen(port, () => console.log(`Server running on port ${port}`))

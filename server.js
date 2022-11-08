@@ -49,7 +49,7 @@ server.post('/api/courses/add', (req, res) => {
 
 //-------------------------------- PUT --------------------------------------
 
-server.post('/api/courses/edit/:id', (req, res) => {
+server.put('/api/courses/edit/:id', (req, res) => {
     const course = courses.find(courses => courses.id === parseInt(req.params.id))
     course.name = req.body.name
 

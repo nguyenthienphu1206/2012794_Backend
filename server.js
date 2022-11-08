@@ -47,4 +47,8 @@ server.post('/api/courses/add', (req, res) => {
     }))
 })
 
+//-------------------------------- PUT --------------------------------------
+
+//-------------------------------- DELETE --------------------------------------
+
 server.listen(port, () => console.log(`Server running on port ${port}`))

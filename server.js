@@ -36,11 +36,11 @@ server.get('/api/courses/:id', (req, res) => {
 
 server.post('/api/courses/add', (req, res) => {
     const course = {
-        id: req.body.id,
+        id: req.body.id, // Phải thêm server.use(express.json())
         name: req.body.name
     }
     courses.push(course)
-    res.send(JSON.stringify({
+    res.send(JSON.stringify({ // convert sang json
         success: true,
         notice: "Thêm thành công",
         data: courses
@@ -48,6 +48,17 @@ server.post('/api/courses/add', (req, res) => {
 })
 
 //-------------------------------- PUT --------------------------------------
+
+server.post('/api/courses/edit/:id', (req, res) => {
+    const course = courses.find(courses => courses.id === parseInt(req.params.id))
+    course.name = req.body.name
+
+    res.send(JSON.stringify({ // convert sang json
+        success: true,
+        notice: "Cập nhật thành công",
+        data: courses
+    }))
+})
 
 //-------------------------------- DELETE --------------------------------------
 

@@ -1,5 +1,6 @@
 const express = require('express')
 const server = express()
+server.use(express.json())
 
 // Tạo port =, nếu port bị trùng sẽ tìm port khác thay thế
 const port = 3000 || process.env.port
@@ -9,6 +10,8 @@ const courses = [
     { id: 2, name: 'ReactJS' },
     { id: 3, name: 'CSS' }
 ]
+
+//-------------------------------- GET --------------------------------------
 
 // Khi mở trang web mặc định
 server.get('/', (req, res) => {
@@ -27,6 +30,21 @@ server.get('/api/courses/:id', (req, res) => {
         res.status(404).send('ID không tồn tại')
     }
     res.send(course)
+})
+
+//-------------------------------- POST --------------------------------------
+
+server.post('/api/courses/add', (req, res) => {
+    const course = {
+        id: req.body.id,
+        name: req.body.name
+    }
+    courses.push(course)
+    res.send(JSON.stringify({
+        success: true,
+        notice: "Thêm thành công",
+        data: courses
+    }))
 })
 
 server.listen(port, () => console.log(`Server running on port ${port}`))

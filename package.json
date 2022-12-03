@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/nguyenthienphu1206/2012794_Backend#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "pg": "^8.8.0"
   }
 }
